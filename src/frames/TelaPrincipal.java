@@ -8,20 +8,21 @@ package frames;
 import internal_frames.TelaCadastroCliente;
 import internal_frames.TelaCadastroFornecedor;
 import java.awt.Dimension;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 
 /**
  *
  * @author cristiano
  */
-public class TelaPrincipal extends javax.swing.JFrame {
-
+public class TelaPrincipal extends javax.swing.JFrame implements InternalFrameListener {
 
     TelaCadastroCliente telaCadastroCliente;
     TelaCadastroFornecedor telaCadastroFornecedor;
-   
+
     public TelaPrincipal() {
         initComponents();
-        
+
     }
 
     /**
@@ -98,15 +99,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
-       telaCadastroCliente = new TelaCadastroCliente();
-       jDesktopPanelPrincipal.add(telaCadastroCliente);
-       telaCadastroCliente.setVisible(true);
+        if (telaCadastroCliente == null) {
+            telaCadastroCliente = new TelaCadastroCliente();
+            telaCadastroCliente.addInternalFrameListener(this);
+            jDesktopPanelPrincipal.add(telaCadastroCliente);
+            telaCadastroCliente.setVisible(true);
+        } else {
+            jDesktopPanelPrincipal.moveToFront(telaCadastroCliente);
+        }
     }//GEN-LAST:event_jMenuItemClienteActionPerformed
 
     private void jMenuItemFornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFornecedoresActionPerformed
-       telaCadastroFornecedor = new TelaCadastroFornecedor();
-       jDesktopPanelPrincipal.add(telaCadastroFornecedor);
-       telaCadastroFornecedor.setVisible(true);
+        if (telaCadastroFornecedor == null) {
+            telaCadastroFornecedor = new TelaCadastroFornecedor();
+            telaCadastroFornecedor.addInternalFrameListener(this);
+            jDesktopPanelPrincipal.add(telaCadastroFornecedor);
+            telaCadastroFornecedor.setVisible(true);
+        } else {
+            jDesktopPanelPrincipal.moveToFront(telaCadastroFornecedor);
+        }
     }//GEN-LAST:event_jMenuItemFornecedoresActionPerformed
 
     /**
@@ -152,4 +163,45 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemFornecedores;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void internalFrameOpened(InternalFrameEvent e) {
+
+    }
+
+    @Override
+    public void internalFrameClosing(InternalFrameEvent e) {
+
+    }
+
+    @Override
+    public void internalFrameClosed(InternalFrameEvent e) {
+        if (e.getSource() == telaCadastroCliente) {
+            telaCadastroCliente = null;
+        } else if (e.getSource() == telaCadastroFornecedor) {
+            telaCadastroFornecedor = null;
+
+        }
+
+    }
+
+    @Override
+    public void internalFrameIconified(InternalFrameEvent e) {
+
+    }
+
+    @Override
+    public void internalFrameDeiconified(InternalFrameEvent e) {
+
+    }
+
+    @Override
+    public void internalFrameActivated(InternalFrameEvent e) {
+
+    }
+
+    @Override
+    public void internalFrameDeactivated(InternalFrameEvent e) {
+
+    }
 }

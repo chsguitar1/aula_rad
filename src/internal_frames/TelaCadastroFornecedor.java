@@ -16,6 +16,8 @@ public class TelaCadastroFornecedor extends TelaCadastros {
      */
     public TelaCadastroFornecedor() {
         initComponents();
+        componentes.add(meuTextfieldNome);
+        habilitaCampos(false);
     }
 
     /**
@@ -27,21 +29,30 @@ public class TelaCadastroFornecedor extends TelaCadastros {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        meuTextfieldNome = new components.MeuTextfield("Nome");
+
         setTitle("Tela Cadastro Fornecedores");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getPainelCentral());
         getPainelCentral().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 908, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(meuTextfieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(371, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(meuTextfieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private components.MeuTextfield meuTextfieldNome;
     // End of variables declaration//GEN-END:variables
 }

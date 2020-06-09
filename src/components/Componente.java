@@ -9,10 +9,11 @@ package components;
  *
  * @author cristiano
  */
-public interface Compenente {
+public interface Componente {
     
     public boolean ehvazio();
     public boolean ehValido();
     public void ehEnabled(boolean status);
+    public void limpar();
     
 }

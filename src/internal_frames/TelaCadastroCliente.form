@@ -22,13 +22,49 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="854" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="meuTextfieldEndereco" min="-2" pref="395" max="-2" attributes="0"/>
+                      <EmptySpace min="9" pref="401" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="meuTextfieldNome" alignment="0" max="32767" attributes="0"/>
+                  <Component id="meuTextfieldEmail" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="322" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Component id="meuTextfieldNome" min="-2" pref="45" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="meuTextfieldEmail" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Component id="meuTextfieldEndereco" min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace pref="98" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="components.MeuTextfield" name="meuTextfieldEndereco">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new components.MeuTextfield(&quot;Endere&#xe7;o&quot;)"/>
+      </AuxValues>
+    </Component>
+    <Component class="components.MeuTextfield" name="meuTextfieldNome">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new components.MeuTextfield(&quot;Nome&quot;)"/>
+      </AuxValues>
+    </Component>
+    <Component class="components.MeuTextfield" name="meuTextfieldEmail">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new components.MeuTextfield(&quot;Email&quot;)"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
 </Form>

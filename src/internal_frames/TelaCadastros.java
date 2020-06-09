@@ -5,6 +5,9 @@
  */
 package internal_frames;
 
+import components.Componente;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -13,16 +16,34 @@ import javax.swing.JPanel;
  * @author cristiano
  */
 public class TelaCadastros extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form TelaCadastros
-     */
+    
+    public List<Componente> componentes;
+    
     public TelaCadastros() {
         initComponents();
+        componentes = new ArrayList<>();
+        
     }
-
+    
     public JPanel getPainelCentral() {
         return jPanelContainer;
+    }
+    
+    public void habilitaCampos(boolean status) {
+        
+        for (Componente c : componentes) {
+            
+            c.ehEnabled(status);
+            
+        }
+        
+    }
+    
+    public void limparCampos() {
+        for (Componente c : componentes) {
+            c.limpar();
+        }
+        
     }
 
     /**
@@ -38,6 +59,7 @@ public class TelaCadastros extends javax.swing.JInternalFrame {
         jButtonIncluir = new javax.swing.JButton();
         jButtonAlterar = new javax.swing.JButton();
         jButtonExcluir = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
         jPanelContainer = new javax.swing.JPanel();
 
@@ -77,6 +99,14 @@ public class TelaCadastros extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jButtonExcluir);
+
+        jButton1.setText("Salvar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
 
         jButtonCancelar.setText("Cancelar");
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +157,7 @@ public class TelaCadastros extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        if(evt.getClickCount() ==2){
+        if (evt.getClickCount() == 2) {
             JOptionPane.showMessageDialog(this, this.getSize());
         }
     }//GEN-LAST:event_formMouseClicked
@@ -137,19 +167,24 @@ public class TelaCadastros extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonIncluirActionPerformed
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-       alterar();
+        alterar();
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-      excluir();
+        excluir();
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-      cancelar();
+        cancelar();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        salvar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     public javax.swing.JButton jButtonAlterar;
     public javax.swing.JButton jButtonCancelar;
     public javax.swing.JButton jButtonExcluir;
@@ -159,15 +194,39 @@ public class TelaCadastros extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     public void incluir() {
-        System.out.println("internal_frames.TelaCadastros.incluir()");
+        habilitaCampos(true);
     }
-    private void alterar(){
+    
+    private void alterar() {
         
     }
     
-    private void cancelar(){}
+    private void cancelar() {
+        limparCampos();
+        habilitaCampos(isMaximum);
+    }
     
-    private void excluir(){
+    private void excluir() {
+        
+    }
     
+    private void salvar() {
+        int index = 0;//3 componentes == tamanho lista ==3
+        for (Componente c : componentes) {
+            System.out.println("valido"+c.ehValido());
+            if (c.ehValido()) {
+                index++;
+            }
+        }
+        System.out.println("tamanho da lista"+componentes.size());
+        System.out.println("tamho do indice"+index);
+        if (index == componentes.size()) {
+            JOptionPane.showMessageDialog(this, "dados salvos com sucesso!");
+            limparCampos();
+            habilitaCampos(false);
+            index = 0;
+        }else{
+           JOptionPane.showMessageDialog(this, "Erro no formulario");
+        }
     }
 }
